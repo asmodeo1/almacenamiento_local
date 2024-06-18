@@ -68,19 +68,10 @@ function comprobarPregunta() {
 
     if(respuestaElegida == arrayPreguntas[preguntaActual].correcta) {
         aciertos++;
-        const elementoAciertos = document.getElementById("aciertos");
-        elementoAciertos.textContent = aciertos;
-        elementoAciertos.style.animation = "";
-        elementoAciertos.offsetWidth;
-        elementoAciertos.style.animation = "resaltar 1s";
-
+        mostrarAciertoFallo("aciertos", aciertos);
     } else {
         fallos++;
-        const elementoFallos = document.getElementById("fallos");
-        elementoFallos.textContent = fallos;
-        elementoFallos.style.animation = "";
-        elementoFallos.offsetWidth;
-        elementoFallos.style.animation = "resaltar 1s";
+        mostrarAciertoFallo("fallos", fallos);
     }
     preguntaActual++;
     // Comprobamos si hemos terminado
@@ -93,6 +84,14 @@ function comprobarPregunta() {
         guardarEstado();
         mostrarPregunta();
     }
+}
+
+function mostrarAciertoFallo(id, valor) {
+    const elemento = document.getElementById(id);
+    elemento.textContent = valor;
+    elemento.style.animation = "";
+    elemento.offsetWidth;
+    elemento.style.animation = "resaltar 1s";
 }
 
 function guardarEstado() {

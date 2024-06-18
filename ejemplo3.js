@@ -14,6 +14,7 @@ const arrayPreguntas = [
 let aciertos = 0;
 let fallos = 0;
 let preguntaActual = 0;
+let tiempo = 0;
 
 function mostrarPregunta() {
     const pregunta = document.getElementById("pregunta");
@@ -98,6 +99,7 @@ function guardarEstado() {
     localStorage.setItem("preguntaActual", preguntaActual);
     localStorage.setItem("aciertos", aciertos);
     localStorage.setItem("fallos", fallos);
+    localStorage.setItem("tiempo", tiempo);
 }
 
 function cargarEstado() {
@@ -112,22 +114,37 @@ function cargarEstado() {
         fallos = localStorage.getItem("fallos");
         document.getElementById("fallos").textContent = fallos;
     }
+    if(localStorage.getItem("tiempo") != null) {
+        tiempo = localStorage.getItem("tiempo");
+        document.getElementById("tiempo").textContent = tiempo;
+    }
 }
 
 function reiniciar() {
     aciertos = 0;
     fallos = 0;
     preguntaActual = 0;
+    tiempo = 0;
     document.getElementById("aciertos").textContent = aciertos;
     document.getElementById("fallos").textContent = fallos;
+    document.getElementById("tiempo").textContent = tiempo;
     mostrarPregunta();
     document.getElementById("comprobar").disabled = false;
     // Borramos los datos guardados
     localStorage.clear();
 }
 
+function incrementarTiempo() {
+    tiempo++;
+    document.getElementById("tiempo").textContent = tiempo;
+    localStorage.setItem("tiempo", tiempo);
+}
+
 cargarEstado();
 mostrarPregunta();
+
+// Cada segundo incrementamos el tiempo
+setInterval(incrementarTiempo, 1_000);
 
 document.getElementById("comprobar").addEventListener("click", comprobarPregunta);
 document.getElementById("reiniciar").addEventListener("click", reiniciar);

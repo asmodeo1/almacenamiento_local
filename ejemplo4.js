@@ -29,6 +29,13 @@ function cargarModo() {
     }
 }
 
+/*function borrarAlmacenamiento() {
+    localStorage.removeItem("color");
+    localStorage.removeItem("backgroundColor");
+}
+
+setTimeout(borrarAlmacenamiento, 10_000);*/
+
 cargarModo();
 document.getElementById("modoClaro").addEventListener("click", ponerModoClaro);
 document.getElementById("modoOscuro").addEventListener("click", ponerModoOscuro);

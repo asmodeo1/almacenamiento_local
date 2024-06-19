@@ -1,6 +1,6 @@
 // Guardar datos en el almacenamiento local
 localStorage.setItem("nombre", "pepe");
-localStorage.setItem("edad", "21");
+localStorage.setItem("edad", 21);
 const vehiculo = { marca: "opel", matricula: "61273BRA" };
 localStorage.setItem("coche", JSON.stringify(vehiculo));
 // Otra manera de guardar un dato
@@ -19,4 +19,4 @@ localStorage.clear();
 
 // Guardar datos en el almacenamiento de sesión
 sessionStorage.setItem("nombre", "pepe");
-// EL resto de cosas (eliminar, leer, ...) es igual que con localStorage
+// El resto de cosas (eliminar, leer, ...) es igual que con localStorage
